@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 18.0px Helvetica; min-height: 22.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Daily Push-Ups Tracker&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="style.css" /&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;header class="app-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;Daily Push-Ups&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="sub"&gt;Each &lt;b&gt;P&lt;/b&gt; = 10 push-ups · H = hang (seconds) · &lt;b&gt;f&lt;/b&gt; = feet touching&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="header-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button id="btnToday" class="btn"&gt;Today&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button id="btnExport" class="btn btn-secondary"&gt;Export JSON&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label class="btn btn-secondary file-btn"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Import JSON</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input id="fileImport" type="file" accept="application/json" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;main class="layout"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="card calendar-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="btnPrev" class="btn btn-icon" aria-label="Previous month"&gt;‹&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="month-title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 id="monthLabel"&gt;Month&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="mini"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span id="monthTotals"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="btnNext" class="btn btn-icon" aria-label="Next month"&gt;›&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="dow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;Sun&lt;/div&gt;&lt;div&gt;Mon&lt;/div&gt;&lt;div&gt;Tue&lt;/div&gt;&lt;div&gt;Wed&lt;/div&gt;&lt;div&gt;Thu&lt;/div&gt;&lt;div&gt;Fri&lt;/div&gt;&lt;div&gt;Sat&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="calendarGrid" class="grid"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="card editor-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-header editor-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;h2 id="selectedDateLabel"&gt;Select a day&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="mini" id="selectedSummary"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button id="btnDayOff" class="btn btn-warning"&gt;Toggle Day Off&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="editor"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Push-up sets (each set = 10 reps)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="controls"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button id="btnPMinus" class="btn btn-secondary"&gt;−&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;input id="pushSets" type="number" min="0" step="1" value="0" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button id="btnPPlus" class="btn"&gt;+&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hint"&gt;Example: 7 sets = 70 push-ups = &lt;b&gt;PPPPPPP&lt;/b&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Hang(s)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hang-controls"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;input id="hangSeconds" type="number" min="0" step="5" placeholder="Seconds (e.g., 40)" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;label class="toggle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input id="hangFeet" type="checkbox" checked /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;Feet touching (f)&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;button id="btnAddHang" class="btn"&gt;Add Hang&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="hangList" class="hang-list"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Notes (optional)&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;textarea id="notes" rows="4" placeholder="Anything you want to note for the day…"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button id="btnSave" class="btn btn-primary"&gt;Save&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button id="btnClearDay" class="btn btn-danger"&gt;Clear Day&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;label&gt;Log-style line&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="logLine" class="logline"&gt;—&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="btnCopyLine" class="btn btn-secondary"&gt;Copy line&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;footer class="footer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="mini"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Data is stored locally in your browser (localStorage). Use Export JSON for backups.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script src="script.js"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
