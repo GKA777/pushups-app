@@ -58,21 +58,28 @@ h2{ margin:0; font-size:18px; }
 .month-title{ text-align:center; }
 .mini{ color:var(--muted); font-size:12px; margin-top:4px; }
 
+/* ✅ Mobile-safe 7-column header row */
 .dow{
   display:grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap:0;
-  padding:10px 12px 6px;
+  padding:10px 8px 6px;
   color:var(--muted);
   font-size:12px;
 }
-.dow div{ text-align:center; }
+.dow div{
+  text-align:center;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
 
+/* ✅ Mobile-safe 7-column calendar grid */
 .grid{
   display:grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap:8px;
-  padding: 8px 12px 12px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap:6px;
+  padding: 8px;
 }
 
 .day{
@@ -84,18 +91,31 @@ h2{ margin:0; font-size:18px; }
   cursor:pointer;
   transition: transform .06s ease, border-color .1s ease;
   user-select:none;
+  min-width: 0; /* ✅ allow cells to shrink */
 }
 
 .day:hover{ transform: translateY(-1px); border-color:#3b4b64; }
 .day.muted{ opacity:.45; }
 .day.selected{ outline:2px solid rgba(78,161,255,.55); border-color: rgba(78,161,255,.75); }
-.day .n{ font-size:12px; color:var(--muted); display:flex; justify-content:space-between; }
+
+.day .n{
+  font-size:12px;
+  color:var(--muted);
+  display:flex;
+  justify-content:space-between;
+  gap:6px;
+}
+
 .badge{
   font-size:11px;
   padding:2px 8px;
   border-radius:999px;
   border:1px solid var(--line);
   color:var(--muted);
+  white-space:nowrap;
+  max-width: 100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .badge.off{ border-color: rgba(255,204,102,.35); color: var(--warn); }
 
@@ -219,6 +239,15 @@ textarea{
   padding: 0 18px 18px;
 }
 
+/* ✅ Responsive layout */
 @media (max-width: 980px){
   .layout{ grid-template-columns: 1fr; }
+}
+
+/* ✅ Extra-tight phone sizing so 7 columns always fit */
+@media (max-width: 520px){
+  .grid{ gap:5px; padding:8px; }
+  .day{ padding:8px; min-height:76px; }
+  .day .sum{ font-size:11px; }
+  .badge{ font-size:10px; padding:2px 6px; }
 }
